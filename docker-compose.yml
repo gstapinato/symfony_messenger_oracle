@@ -1,0 +1,27 @@
+version: "3.4"
+
+services:
+  database:
+    image: gvenzl/oracle-xe:21-slim        
+    container_name: oracledatabase    
+    ports:    
+      - 1521:1521
+    environment:
+      ORACLE_PASSWORD: root
+      APP_USER: root
+      APP_USER_PASSWORD: root
+  php:
+    build:
+      context: .
+      target: app_php
+      args:
+        SYMFONY_VERSION: ${SYMFONY_VERSION:-}
+        STABILITY: ${STABILITY:-stable}
+    restart: unless-stopped
+    volumes:
+      - php_socket:/var/run/php
+    depends_on:
+      - database
+
+volumes:
+  php_socket:
