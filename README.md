@@ -15,14 +15,16 @@ Small docker compose application which shows a bug on Messenger component when `
 2. Run `docker compose up --build --remove-orphans -d` to create and start containers.
 3. Run `docker compose logs database` to see database service log. Wait for database is up and ready for requests.
 
-```
 Should be shown:
 
+```
+...
 #########################
 
 DATABASE IS READY TO USE!
 
 #########################
+...
 ```
 
 
