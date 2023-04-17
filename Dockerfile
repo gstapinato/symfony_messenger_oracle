@@ -39,6 +39,12 @@ RUN apk add --no-cache \
 ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so
 
 ARG APCU_VERSION=5.1.22
+
+RUN if [ "${http_proxy}" != "" ]; then \
+    # Needed for pecl to succeed
+    pear config-set http_proxy ${http_proxy} \
+;fi
+
 RUN set -eux; \
     apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
