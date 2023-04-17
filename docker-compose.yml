@@ -10,6 +10,7 @@ services:
       ORACLE_PASSWORD: root
       APP_USER: root
       APP_USER_PASSWORD: root
+      ORACLE_DATABASE: DB
   php:
     build:
       context: .
